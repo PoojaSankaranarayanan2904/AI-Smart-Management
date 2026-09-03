@@ -1,385 +1,760 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AI Smart Management</title>
+<title>AI Smart Management | Digital Transformation</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b1020;
-            color: white;
-            line-height: 1.6;
-        }
+:root {
+    --bg: #080b18;
+    --card: rgba(20, 27, 52, 0.75);
+    --border: rgba(167, 139, 250, 0.25);
+    --primary: #8b5cf6;
+    --secondary: #c4b5fd;
+    --text: #ffffff;
+    --muted: #b8bfd3;
+}
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(11, 16, 32, 0.95);
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #2d3655;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top right, #21134d 0%, transparent 35%),
+        radial-gradient(circle at bottom left, #111d46 0%, transparent 35%),
+        var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+/* NAVBAR */
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-        }
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(8, 11, 24, 0.88);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
 
-        nav a:hover {
-            color: #a78bfa;
-        }
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
 
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #111936, #24134d);
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 22px;
+    transition: 0.3s;
+}
 
-        .hero h1 {
-            font-size: 58px;
-            margin-bottom: 20px;
-        }
+nav a:hover {
+    color: var(--secondary);
+}
 
-        .hero h1 span {
-            color: #a78bfa;
-        }
+/* HERO */
 
-        .hero p {
-            max-width: 750px;
-            margin: auto;
-            font-size: 20px;
-            color: #d1d5db;
-        }
+.hero {
+    min-height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 28px;
-            background: #7c3aed;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-        }
+.hero-content {
+    max-width: 950px;
+}
 
-        .btn:hover {
-            background: #9333ea;
-        }
+.badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    color: var(--secondary);
+    background: rgba(139, 92, 246, 0.1);
+    margin-bottom: 25px;
+}
 
-        section {
-            padding: 80px 8%;
-        }
+.hero h1 {
+    font-size: clamp(42px, 7vw, 76px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 45px;
-        }
+.gradient {
+    background: linear-gradient(90deg, #a78bfa, #e9d5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        .section-title span {
-            color: #a78bfa;
-        }
+.hero p {
+    max-width: 800px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 20px;
+}
 
-        .about {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-            color: #d1d5db;
-            font-size: 18px;
-        }
+.buttons {
+    margin-top: 35px;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    margin: 7px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .card {
-            background: #151d35;
-            padding: 30px;
-            border-radius: 18px;
-            border: 1px solid #303a5c;
-            transition: 0.3s;
-        }
+.primary-btn {
+    background: var(--primary);
+    color: white;
+}
 
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #8b5cf6;
-        }
+.secondary-btn {
+    border: 1px solid var(--border);
+    color: white;
+}
 
-        .card h3 {
-            margin-bottom: 12px;
-            color: #c4b5fd;
-        }
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+}
 
-        .card p {
-            color: #cbd5e1;
-        }
+/* SECTIONS */
 
-        .dashboard {
-            background: #10162b;
-        }
+section {
+    padding: 90px 8%;
+}
 
-        .stat {
-            text-align: center;
-        }
+.section-title {
+    text-align: center;
+    font-size: clamp(30px, 5vw, 45px);
+    margin-bottom: 15px;
+}
 
-        .stat h3 {
-            font-size: 38px;
-            color: #a78bfa;
-        }
+.section-subtitle {
+    text-align: center;
+    color: var(--muted);
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
 
-        .case-study {
-            margin-top: 20px;
-        }
+/* ABOUT */
 
-        .chatbot {
-            max-width: 700px;
-            margin: auto;
-            background: #151d35;
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #303a5c;
-        }
+.about-box {
+    max-width: 950px;
+    margin: auto;
+    padding: 40px;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    backdrop-filter: blur(12px);
+}
 
-        .chatbot input {
-            width: 70%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
+.about-box p {
+    color: var(--muted);
+    font-size: 18px;
+}
 
-        .chatbot button {
-            padding: 14px 20px;
-            border: none;
-            border-radius: 8px;
-            background: #7c3aed;
-            color: white;
-            cursor: pointer;
-        }
+/* CARDS */
 
-        #answer {
-            margin-top: 20px;
-            color: #c4b5fd;
-        }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #070b16;
-            color: #9ca3af;
-        }
+.card {
+    padding: 30px;
+    border-radius: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    transition: 0.35s;
+}
 
-        @media (max-width: 700px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+}
 
-            nav a {
-                margin: 0 8px;
-            }
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
 
-            .hero h1 {
-                font-size: 40px;
-            }
-        }
-    </style>
+.card h3 {
+    color: var(--secondary);
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    background: rgba(10, 15, 35, 0.7);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h3 {
+    font-size: 43px;
+    color: var(--secondary);
+}
+
+/* OPPORTUNITY FINDER */
+
+.finder {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #343c5d;
+    background: #0e1428;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+}
+
+.find-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #0e1428;
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    display: none;
+}
+
+/* AI ASSISTANT */
+
+.chatbot {
+    max-width: 800px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 25px;
+    background: var(--card);
+    border: 1px solid var(--border);
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.chat-input input {
+    flex: 1;
+}
+
+.chat-input button {
+    padding: 0 22px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+}
+
+#answer {
+    margin-top: 20px;
+    color: var(--secondary);
+}
+
+/* TIMELINE */
+
+.timeline {
+    max-width: 850px;
+    margin: auto;
+}
+
+.timeline-item {
+    padding: 25px;
+    margin: 20px 0;
+    border-left: 3px solid var(--primary);
+    background: var(--card);
+    border-radius: 0 15px 15px 0;
+}
+
+.timeline-item h3 {
+    color: var(--secondary);
+}
+
+/* REFERENCES */
+
+.references {
+    max-width: 850px;
+    margin: auto;
+}
+
+.references li {
+    margin: 15px 0;
+    color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #050710;
+    color: #8d94aa;
+}
+
+footer strong {
+    color: var(--secondary);
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 6px;
+        font-size: 13px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-input {
+        flex-direction: column;
+    }
+
+    .chat-input button {
+        padding: 14px;
+    }
+
+    section {
+        padding: 65px 6%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo">🤖 AI Smart Management</div>
+<!-- NAVIGATION -->
 
-        <div>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#ai">AI</a>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#future">Future</a>
+<nav>
+
+    <div class="logo">
+        🤖 AI Smart Management
+    </div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#ai">AI</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#finder">Finder</a>
+        <a href="#future">Future</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🚀 MBA Paper Presentation 2026
         </div>
-    </nav>
+
+        <h1>
+            Digital Transformation &
+            <span class="gradient">
+                Intelligent Management
+            </span>
+        </h1>
+
+        <p>
+            Transforming modern businesses through Artificial Intelligence,
+            Data Analytics, Automation and Intelligent Decision Making.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#about" class="btn primary-btn">
+                Explore Platform →
+            </a>
+
+            <a href="#finder" class="btn secondary-btn">
+                Find Opportunity
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <section class="hero" id="home">
-        <div>
-            <h1>Digital Transformation & <span>Intelligent Management</span></h1>
+<!-- ABOUT -->
 
+<section id="about">
+
+    <h2 class="section-title">
+        About <span class="gradient">Digital Transformation</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Technology is transforming the way organizations operate,
+        compete and make decisions.
+    </p>
+
+    <div class="about-box">
+
+        <p>
+            Digital Transformation is the integration of digital technologies
+            into every area of a business to improve operations, customer
+            experience and organizational performance.
+        </p>
+
+        <br>
+
+        <p>
+            Intelligent Management combines Artificial Intelligence,
+            Machine Learning, Data Analytics and Automation to support
+            faster, smarter and data-driven business decisions.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- AI -->
+
+<section id="ai">
+
+    <h2 class="section-title">
+        AI in <span class="gradient">Intelligent Management</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Artificial Intelligence enables organizations to convert data
+        into actionable business intelligence.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>AI Automation</h3>
             <p>
-                Transforming modern businesses through Artificial Intelligence,
-                Data Analytics, Automation and Intelligent Decision Making.
+                Automates repetitive tasks and improves operational efficiency.
             </p>
-
-            <a href="#about" class="btn">Explore Now →</a>
         </div>
-    </section>
 
-
-    <section id="about">
-        <h2 class="section-title">About <span>Digital Transformation</span></h2>
-
-        <div class="about">
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Predictive Analytics</h3>
             <p>
-                Digital Transformation is the process of using modern digital
-                technologies to improve business operations, customer experience
-                and decision-making.
+                Identifies patterns and predicts future business trends.
             </p>
+        </div>
 
-            <br>
-
+        <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Smart Decisions</h3>
             <p>
-                Intelligent Management combines Artificial Intelligence,
-                Machine Learning and Data Analytics to help organizations make
-                faster, smarter and more effective decisions.
+                Provides data-driven insights for strategic decision-making.
             </p>
         </div>
-    </section>
 
-
-    <section id="ai">
-        <h2 class="section-title">AI in <span>Intelligent Management</span></h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>🤖 AI Automation</h3>
-                <p>Automates repetitive business processes and saves time.</p>
-            </div>
-
-            <div class="card">
-                <h3>📊 Predictive Analytics</h3>
-                <p>Uses historical data to predict future business trends.</p>
-            </div>
-
-            <div class="card">
-                <h3>💡 Smart Decisions</h3>
-                <p>AI provides data-driven insights for better decisions.</p>
-            </div>
-
-            <div class="card">
-                <h3>👥 Customer Experience</h3>
-                <p>Personalizes products and services based on customer needs.</p>
-            </div>
-
-        </div>
-    </section>
-
-
-    <section class="dashboard" id="dashboard">
-        <h2 class="section-title">Business <span>Dashboard</span></h2>
-
-        <div class="cards">
-
-            <div class="card stat">
-                <h3>+28%</h3>
-                <p>Sales Growth</p>
-            </div>
-
-            <div class="card stat">
-                <h3>94%</h3>
-                <p>Customer Satisfaction</p>
-            </div>
-
-            <div class="card stat">
-                <h3>87%</h3>
-                <p>Employee Productivity</p>
-            </div>
-
-            <div class="card stat">
-                <h3>96%</h3>
-                <p>AI Accuracy</p>
-            </div>
-
-        </div>
-    </section>
-
-
-    <section>
-        <h2 class="section-title">Technology <span>Stack</span></h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>Artificial Intelligence</h3>
-                <p>Intelligent systems for business decision-making.</p>
-            </div>
-
-            <div class="card">
-                <h3>Machine Learning</h3>
-                <p>Learning patterns from business data.</p>
-            </div>
-
-            <div class="card">
-                <h3>Cloud Computing</h3>
-                <p>Scalable and flexible digital infrastructure.</p>
-            </div>
-
-            <div class="card">
-                <h3>IoT & Automation</h3>
-                <p>Connected devices and automated operations.</p>
-            </div>
-
-        </div>
-    </section>
-
-
-    <section>
-        <h2 class="section-title">Real-World <span>Applications</span></h2>
-
-        <div class="cards">
-
-            <div class="card case-study">
-                <h3>Amazon</h3>
-                <p>AI supports recommendation systems, logistics and customer experience.</p>
-            </div>
-
-            <div class="card case-study">
-                <h3>Netflix</h3>
-                <p>AI analyzes user preferences to provide personalized recommendations.</p>
-            </div>
-
-            <div class="card case-study">
-                <h3>Tesla</h3>
-                <p>AI and data help power intelligent vehicles and smart mobility.</p>
-            </div>
-
-        </div>
-    </section>
-
-
-    <section>
-        <h2 class="section-title">🤖 AI Business <span>Assistant</span></h2>
-
-        <div class="chatbot">
-
+        <div class="card">
+            <div class="card-icon">👥</div>
+            <h3>Customer Intelligence</h3>
             <p>
-                Ask me something about Digital Transformation or AI!
+                Understands customer behaviour and enables personalization.
             </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section class="dashboard" id="dashboard">
+
+    <h2 class="section-title">
+        Intelligent <span class="gradient">Business Dashboard</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Sample performance indicators demonstrating the impact of intelligent management.
+    </p>
+
+    <div class="cards">
+
+        <div class="card stat">
+            <h3>+28%</h3>
+            <p>Sales Growth</p>
+        </div>
+
+        <div class="card stat">
+            <h3>94%</h3>
+            <p>Customer Satisfaction</p>
+        </div>
+
+        <div class="card stat">
+            <h3>87%</h3>
+            <p>Employee Productivity</p>
+        </div>
+
+        <div class="card stat">
+            <h3>96%</h3>
+            <p>AI Accuracy</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- OPPORTUNITY FINDER -->
+
+<section id="finder">
+
+    <h2 class="section-title">
+        💼 AI Business <span class="gradient">Opportunity Finder</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Enter your business details and explore a sample AI-generated
+        market opportunity.
+    </p>
+
+    <div class="finder">
+
+        <div class="form-grid">
+
+            <input
+                type="text"
+                id="product"
+                placeholder="Product / Business"
+            >
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Your Location"
+            >
+
+            <input
+                type="number"
+                id="quantity"
+                placeholder="Monthly Production"
+            >
+
+            <select id="price">
+
+                <option value="">Select Price Range</option>
+                <option>₹100 - ₹500</option>
+                <option>₹500 - ₹1000</option>
+                <option>₹1000 - ₹5000</option>
+
+            </select>
+
+        </div>
+
+        <button class="find-btn" onclick="findOpportunity()">
+            🔍 Find Business Opportunity
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- TECHNOLOGY -->
+
+<section>
+
+    <h2 class="section-title">
+        Technology <span class="gradient">Stack</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Core technologies enabling intelligent business transformation.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>Artificial Intelligence</h3>
+            <p>
+                Intelligent systems that support business decisions.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Machine Learning</h3>
+            <p>
+                Learns patterns from historical business data.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">☁️</div>
+            <h3>Cloud Computing</h3>
+            <p>
+                Provides scalable and flexible digital infrastructure.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3>IoT & Automation</h3>
+            <p>
+                Connects devices and automates business operations.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REAL WORLD -->
+
+<section>
+
+    <h2 class="section-title">
+        Real-World <span class="gradient">Applications</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Examples of how intelligent technologies are applied in modern organizations.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🛒</div>
+            <h3>E-Commerce</h3>
+            <p>
+                AI-powered recommendation systems and demand forecasting
+                improve customer experience.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🎬</div>
+            <h3>Entertainment</h3>
+            <p>
+                Intelligent recommendation engines personalize content
+                based on user preferences.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🚗</div>
+            <h3>Smart Mobility</h3>
+            <p>
+                AI and data analytics support intelligent transportation
+                and connected vehicles.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- AI ASSISTANT -->
+
+<section>
+
+    <h2 class="section-title">
+        🤖 AI Business <span class="gradient">Assistant</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Ask questions about Digital Transformation, AI and Intelligent Management.
+    </p>
+
+    <div class="chatbot">
+
+        <p>
+            <strong>Try asking:</strong>
+            What is AI? • Benefits of digital transformation •
+            How does AI help businesses?
+        </p>
+
+        <div class="chat-input">
 
             <input
                 type="text"
@@ -387,81 +762,280 @@
                 placeholder="Ask your question..."
             >
 
-            <button onclick="askAI()">Ask AI</button>
-
-            <p id="answer"></p>
-
-        </div>
-    </section>
-
-
-    <section id="future">
-        <h2 class="section-title">Future of <span>AI</span></h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>🏭 Smart Factories</h3>
-                <p>AI-powered manufacturing and intelligent production systems.</p>
-            </div>
-
-            <div class="card">
-                <h3>🦾 Robotics</h3>
-                <p>Advanced robots working alongside humans.</p>
-            </div>
-
-            <div class="card">
-                <h3>✨ Generative AI</h3>
-                <p>AI systems that create content, ideas and business solutions.</p>
-            </div>
-
-            <div class="card">
-                <h3>🌱 Sustainable AI</h3>
-                <p>Using intelligent technology to support sustainable business.</p>
-            </div>
+            <button onclick="askAI()">
+                Ask AI
+            </button>
 
         </div>
-    </section>
+
+        <p id="answer"></p>
+
+    </div>
+
+</section>
 
 
-    <footer>
-        <p>© 2026 AI Smart Management | MBA Paper Presentation</p>
-        <p>Digital Transformation and Intelligent Management</p>
-    </footer>
+<!-- FUTURE -->
+
+<section id="future">
+
+    <h2 class="section-title">
+        Future of <span class="gradient">Intelligent Management</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Emerging technologies will redefine business strategy and management.
+    </p>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <h3>🏭 Smart Factories</h3>
+
+            <p>
+                AI-powered manufacturing systems will optimize production,
+                quality and supply chains.
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <h3>🦾 Human + AI Collaboration</h3>
+
+            <p>
+                Employees and intelligent systems will work together
+                to improve productivity and creativity.
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <h3>✨ Generative AI</h3>
+
+            <p>
+                Generative AI will support content creation, analysis,
+                strategy and innovation.
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <h3>🌱 Sustainable Intelligence</h3>
+
+            <p>
+                AI will help organizations optimize resources and
+                build more sustainable operations.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <script>
-        function askAI() {
+<!-- REFERENCES -->
 
-            const question =
-                document.getElementById("question").value.toLowerCase();
+<section>
 
-            const answer =
-                document.getElementById("answer");
+    <h2 class="section-title">
+        📚 Research <span class="gradient">References</span>
+    </h2>
 
-            if (question.includes("digital transformation")) {
+    <div class="references">
 
-                answer.innerHTML =
-                    "Digital Transformation means using digital technologies to improve business operations, customer experience and decision-making.";
+        <ul>
 
-            } else if (question.includes("ai")) {
+            <li>
+                Digital Transformation and its impact on modern business management.
+            </li>
 
-                answer.innerHTML =
-                    "AI helps businesses automate processes, analyze data, predict trends and make smarter decisions.";
+            <li>
+                Artificial Intelligence and Machine Learning in organizational decision-making.
+            </li>
 
-            } else if (question.includes("benefit")) {
+            <li>
+                Data Analytics and Predictive Intelligence for business strategy.
+            </li>
 
-                answer.innerHTML =
-                    "Major benefits include higher productivity, better decisions, improved customer experience and reduced operational costs.";
+            <li>
+                Automation, Cloud Computing and emerging intelligent technologies.
+            </li>
 
-            } else {
+        </ul>
 
-                answer.innerHTML =
-                    "AI Smart Management can help businesses analyze data, automate operations and make intelligent decisions.";
+    </div>
 
-            }
-        }
-    </script>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>AI Smart Management</strong>
+    </p>
+
+    <p>
+        Digital Transformation and Intelligent Management
+    </p>
+
+    <p>
+        MBA Paper Presentation
+    </p>
+
+</footer>
+
+
+<script>
+
+/* AI ASSISTANT */
+
+function askAI() {
+
+    const question =
+        document.getElementById("question").value.toLowerCase();
+
+    const answer =
+        document.getElementById("answer");
+
+    if (!question.trim()) {
+
+        answer.innerHTML =
+            "💡 Please enter a question first.";
+
+        return;
+    }
+
+    if (question.includes("digital transformation")) {
+
+        answer.innerHTML =
+            "💡 Digital Transformation means integrating digital technologies into business processes to improve efficiency, customer experience and decision-making.";
+
+    }
+
+    else if (
+        question.includes("what is ai") ||
+        question === "ai"
+    ) {
+
+        answer.innerHTML =
+            "🤖 Artificial Intelligence enables machines to learn from data, recognize patterns, automate tasks and support intelligent decisions.";
+
+    }
+
+    else if (
+        question.includes("benefit") ||
+        question.includes("advantages")
+    ) {
+
+        answer.innerHTML =
+            "📈 Major benefits include improved productivity, faster decision-making, better customer experience, cost reduction and predictive insights.";
+
+    }
+
+    else if (
+        question.includes("management")
+    ) {
+
+        answer.innerHTML =
+            "🧠 Intelligent Management uses AI, analytics and automation to help managers make faster and more data-driven decisions.";
+
+    }
+
+    else if (
+        question.includes("machine learning")
+    ) {
+
+        answer.innerHTML =
+            "🧠 Machine Learning is a branch of AI that allows systems to learn patterns from data and improve their predictions over time.";
+
+    }
+
+    else if (
+        question.includes("automation")
+    ) {
+
+        answer.innerHTML =
+            "⚙️ Business automation uses technology to perform repetitive tasks with minimal human intervention, improving speed and efficiency.";
+
+    }
+
+    else {
+
+        answer.innerHTML =
+            "🤖 AI Smart Management helps organizations analyze data, automate operations, predict trends and make intelligent business decisions.";
+
+    }
+
+}
+
+
+/* BUSINESS OPPORTUNITY FINDER */
+
+function findOpportunity() {
+
+    const product =
+        document.getElementById("product").value;
+
+    const location =
+        document.getElementById("location").value;
+
+    const quantity =
+        document.getElementById("quantity").value;
+
+    const price =
+        document.getElementById("price").value;
+
+    const result =
+        document.getElementById("result");
+
+    if (
+        !product ||
+        !location ||
+        !quantity ||
+        !price
+    ) {
+
+        result.style.display = "block";
+
+        result.innerHTML =
+            "⚠️ Please enter all business details to generate an opportunity.";
+
+        return;
+    }
+
+
+    result.style.display = "block";
+
+    result.innerHTML =
+
+        "<strong>🤖 AI Opportunity Analysis</strong><br><br>" +
+
+        "📦 Product: " + product + "<br>" +
+
+        "📍 Current Location: " + location + "<br>" +
+
+        "🏭 Monthly Production: " + quantity + " units<br>" +
+
+        "💰 Price Range: " + price + "<br><br>" +
+
+        "🌍 <strong>Suggested Market:</strong> Dubai / UAE<br>" +
+
+        "📈 <strong>Opportunity:</strong> Explore premium international demand and online B2B buyers.<br>" +
+
+        "🚚 <strong>Strategy:</strong> Compare shipping costs, identify distributors and test a small export batch first.<br>" +
+
+        "⚠️ <strong>Risk:</strong> Validate demand, regulations, logistics and competition before investing heavily.";
+
+}
+
+</script>
 
 </body>
 </html>
